@@ -18,3 +18,12 @@ export const getListsById = async (id:any) => {
         console.error("Error while fetching lists", error);
     }
 };  
+
+export const addList = async (data: any) => {
+    try {
+        const response = await axiosInstance.post(endpoint.getAllLists, data);
+        return response.data;
+    } catch (error) {
+        console.error("Error while adding list", error);
+    }
+}

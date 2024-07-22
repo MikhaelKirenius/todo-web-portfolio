@@ -62,6 +62,20 @@
       "Status": "Completed",
       "Priority": "Low",
       "Deadline": "2022-09-30"
+    },
+    {
+      "id": 10,
+      "Activity_Name": "Makan",
+      "Status": "Pending",
+      "Priority": "Low",
+      "Deadline": "2024-07-23"
+    },
+    {
+      "id": 11,
+      "Activity_Name": "Minum",
+      "Status": "Pending",
+      "Priority": "High",
+      "Deadline": "2024-07-24"
     }
   ]
 }

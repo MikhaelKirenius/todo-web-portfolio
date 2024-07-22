@@ -7,10 +7,10 @@ import useListsModel from "../models/listModels";
 
 // Define the schema without the ID field since it's auto-generated
 const listSchema = z.object({
-  Activity_Name: z.string().nonempty(),
-  Status: z.string().nonempty(),
-  Priority: z.string().nonempty(),
-  Deadline: z.string().nonempty(),
+  Activity_Name: z.string().nonempty('Activity Name is required'),
+  Status: z.string().nonempty('Status is required'),
+  Priority: z.string().nonempty('Priority is required'),
+  Deadline: z.string().nonempty('Deadline is required'),
 });
 
 type List = z.infer<typeof listSchema>;

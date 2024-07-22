@@ -8,13 +8,6 @@
       "Deadline": "2022-10-01"
     },
     {
-      "id": "2",
-      "Activity_Name": "Task 2",
-      "Status": "Completed",
-      "Priority": "Medium",
-      "Deadline": "2022-09-15"
-    },
-    {
       "id": "3",
       "Activity_Name": "Task 3",
       "Status": "Pending",
@@ -57,13 +50,6 @@
       "Deadline": "2022-09-15"
     },
     {
-      "id": "9",
-      "Activity_Name": "Task 9",
-      "Status": "Completed",
-      "Priority": "Low",
-      "Deadline": "2022-09-30"
-    },
-    {
       "id": 10,
       "Activity_Name": "Makan",
       "Status": "Pending",
@@ -76,6 +62,27 @@
       "Status": "Pending",
       "Priority": "High",
       "Deadline": "2024-07-24"
+    },
+    {
+      "id": 12,
+      "Activity_Name": "kerjain tugas Ipa",
+      "Status": "In Progress",
+      "Priority": "Medium",
+      "Deadline": "2024-07-24"
+    },
+    {
+      "id": 13,
+      "Activity_Name": "kerjain tugas IPS",
+      "Status": "Pending",
+      "Priority": "Medium",
+      "Deadline": "2024-07-24"
+    },
+    {
+      "id": 14,
+      "Activity_Name": "task 12",
+      "Status": "Completed",
+      "Priority": "High",
+      "Deadline": "2024-07-11"
     }
   ]
 }

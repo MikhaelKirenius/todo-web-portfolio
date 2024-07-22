@@ -1,5 +1,7 @@
 import { useMutation } from "react-query";
-import { addList } from "../services/Lists";
+import { addList,
+    deleteList
+ } from "../services/Lists";
 
 
 export const useAddList = () => {
@@ -9,6 +11,17 @@ export const useAddList = () => {
         },
         onError: () => {
             alert('Error adding list');
+        }
+    });
+}
+
+export const useDeleteList = () => {
+    return useMutation(deleteList,{
+        onSuccess: () => {
+            window.location.reload();
+        },
+        onError: () => {
+            alert('Error deleting list');
         }
     });
 }

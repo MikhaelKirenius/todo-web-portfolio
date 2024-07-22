@@ -20,6 +20,7 @@ const TodoTable = ({ data }: todoData) => {
           <th>Task Deadline Date</th>
           <th>Task Level</th>
           <th>Task Status</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody className="bg-base-200">

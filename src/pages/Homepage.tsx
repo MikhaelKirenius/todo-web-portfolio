@@ -14,6 +14,7 @@ const Homepage: React.FC = () => {
   const [filter, setFilter] = useState<string>("All");
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
+  
   const filteredTasks = safeTasks.filter((item: TodoTask) => {
     if (filter === "All") return true;
     return item.Status === filter;

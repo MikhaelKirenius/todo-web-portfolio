@@ -1,88 +1,60 @@
 {
   "Lists": [
     {
-      "id": "1",
-      "Activity_Name": "Task 1",
-      "Status": "Pending",
-      "Priority": "High",
-      "Deadline": "2022-10-01"
-    },
-    {
-      "id": "3",
-      "Activity_Name": "Task 3",
-      "Status": "Pending",
-      "Priority": "Low",
-      "Deadline": "2022-09-30"
-    },
-    {
-      "id": "4",
-      "Activity_Name": "Task 4",
-      "Status": "In Progress",
-      "Priority": "High",
-      "Deadline": "2022-10-10"
-    },
-    {
-      "id": "5",
-      "Activity_Name": "Task 5",
-      "Status": "Pending",
-      "Priority": "Medium",
-      "Deadline": "2022-09-20"
-    },
-    {
-      "id": "6",
-      "Activity_Name": "Task 6",
-      "Status": "Completed",
-      "Priority": "Low",
-      "Deadline": "2022-09-25"
-    },
-    {
-      "id": "7",
-      "Activity_Name": "Task 7",
-      "Status": "In Progress",
-      "Priority": "High",
-      "Deadline": "2022-10-05"
-    },
-    {
-      "id": "8",
-      "Activity_Name": "Task 8",
-      "Status": "Pending",
-      "Priority": "Medium",
-      "Deadline": "2022-09-15"
-    },
-    {
-      "id": 10,
+      "id": "10",
       "Activity_Name": "Makan",
       "Status": "Pending",
       "Priority": "Low",
       "Deadline": "2024-07-23"
     },
     {
-      "id": 11,
+      "id": "11",
       "Activity_Name": "Minum",
       "Status": "Pending",
       "Priority": "High",
       "Deadline": "2024-07-24"
     },
     {
-      "id": 12,
+      "id": "12",
       "Activity_Name": "kerjain tugas Ipa",
       "Status": "In Progress",
       "Priority": "Medium",
       "Deadline": "2024-07-24"
     },
     {
-      "id": 13,
+      "id": "13",
       "Activity_Name": "kerjain tugas IPS",
       "Status": "Pending",
       "Priority": "Medium",
       "Deadline": "2024-07-24"
     },
     {
-      "id": 14,
+      "id": "14",
       "Activity_Name": "task 12",
       "Status": "Completed",
       "Priority": "High",
       "Deadline": "2024-07-11"
+    },
+    {
+      "id": 15,
+      "Activity_Name": "Testing ",
+      "Status": "Pending",
+      "Priority": "Low",
+      "Deadline": "2024-12-04"
+    },
+    {
+      "id": 16,
+      "Activity_Name": "Testing ",
+      "Status": "Pending",
+      "Priority": "Low",
+      "Deadline": "2024-12-04"
+    },
+    {
+      "id": 17,
+      "Activity_Name": "TESTING",
+      "Status": "Completed",
+      "Priority": "High",
+      "Deadline": "2024-12-11"
     }
   ]
 }

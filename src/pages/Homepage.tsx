@@ -35,7 +35,7 @@ const Homepage: React.FC = () => {
       <StatCard pendingTasks={pending} ongoingTasks={inProgress} completedTasks={completed} />
       <TodoHeader setFilter={setFilter} onAddNewTask={() => setIsModalOpen(true)} setSearch={setSearch} />
       <TodoTable data={filteredTasks} />
-      <Modal show={isModalOpen} onClose={() => setIsModalOpen(false)}> {/* modal component */}
+      <Modal show={isModalOpen} onClose={() => setIsModalOpen(false)}> 
         <h2 className="mb-5">Add New Task</h2>
         <Form />
       </Modal>

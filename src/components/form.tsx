@@ -5,7 +5,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useAddList } from "../controllers/listsController";
 import useListsModel from "../models/listModels";
 
-// Define the schema without the ID field since it's auto-generated
 const listSchema = z.object({
   Activity_Name: z.string().nonempty('Activity Name is required'),
   Status: z.string().nonempty('Status is required'),

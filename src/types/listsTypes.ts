@@ -31,3 +31,28 @@ export interface TodoHeaderProps {
     ongoingTasks: number;
     completedTasks: number;
   }
+
+export type TaskStatus = 'Pending' | 'In Progress' | 'Completed';
+export type TaskPriority = 'Low' | 'Medium' | 'High';
+
+export type TaskFormData = Omit<TodoTask, 'id'>;
+
+export type FormFieldType = 'text' | 'select' | 'date';
+
+export interface BaseFormField {
+  name: keyof TaskFormData;
+  label: string;
+  type: FormFieldType;
+}
+
+export interface InputFormField extends BaseFormField {
+  type: 'text' | 'date';
+  placeholder?: string;
+}
+
+export interface SelectFormField extends BaseFormField {
+  type: 'select';
+  options: Array<{ value: string; label: string }>;
+}
+
+export type FormField = InputFormField | SelectFormField;

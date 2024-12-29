@@ -1,81 +1,136 @@
-import React from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useAddList } from "../controllers/listsController";
-import useListsModel from "../models/listModels";
+import { useForm, Controller } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { TaskFormData, FormField  } from '../types/listsTypes';
 
-const listSchema = z.object({
-  Activity_Name: z.string().nonempty('Activity Name is required'),
-  Status: z.string().nonempty('Status is required'),
-  Priority: z.string().nonempty('Priority is required'),
-  Deadline: z.string().nonempty('Deadline is required'),
+const taskSchema = z.object({
+  Activity_Name: z.string()
+    .min(1, 'Activity Name is required')
+    .max(100, 'Activity Name must be less than 100 characters'),
+  Status: z.enum(['Pending', 'In Progress', 'Completed'] as const),
+  Priority: z.enum(['Low', 'Medium', 'High'] as const),
+  Deadline: z.string().refine((date) => new Date(date) > new Date(), {
+    message: 'Deadline must be in the future',
+  }),
 });
 
-type List = z.infer<typeof listSchema>;
+interface TaskFormProps {
+  onSubmit: (data: TaskFormData) => void;
+  initialData?: Partial<TaskFormData>;
+}
 
-const Form: React.FC = () => {
-  const { data: tasks } = useListsModel();
-
+const TaskForm: React.FC<TaskFormProps> = ({ onSubmit, initialData }) => {
   const {
-    register,
+    control,
     handleSubmit,
-    formState: { errors },
-  } = useForm<List>({
-    resolver: zodResolver(listSchema),
+    formState: { errors, isSubmitting },
+  } = useForm<TaskFormData>({
+    resolver: zodResolver(taskSchema),
+    defaultValues: initialData,
   });
 
-  const { mutate: addList } = useAddList();
+  const formFields: FormField[] = [
+    {
+      name: 'Activity_Name',
+      label: 'Activity Name',
+      type: 'text',
+      placeholder: 'Enter activity name',
+    },
+    {
+      name: 'Status',
+      label: 'Status',
+      type: 'select',
+      options: [
+        { value: 'Pending', label: 'Pending' },
+        { value: 'In Progress', label: 'In Progress' },
+        { value: 'Completed', label: 'Completed' },
+      ],
+    },
+    {
+      name: 'Priority',
+      label: 'Priority Level',
+      type: 'select',
+      options: [
+        { value: 'Low', label: 'Low' },
+        { value: 'Medium', label: 'Medium' },
+        { value: 'High', label: 'High' },
+      ],
+    },
+    {
+      name: 'Deadline',
+      label: 'Deadline',
+      type: 'date',
+    },
+  ];
 
-  const onSubmit: SubmitHandler<List> = (formData) => {
-    // Find the next ID
-    const nextId = tasks ? Math.max(...tasks.map((task: { id: number }) => task.id)) + 1 : 1;
+  const renderField = (field: FormField) => {
+    return (
+      <Controller
+        name={field.name}
+        control={control}
+        render={({ field: { onChange, value, ref } }) => {
+          if (field.type === 'select') {
+            return (
+              <select
+                id={field.name}
+                onChange={onChange}
+                value={value || ''}
+                ref={ref}
+                className="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              >
+                <option value="">Select {field.label}</option>
+                {field.options.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            );
+          }
 
-    // Add the task with the new ID
-    addList({ ...formData, id: nextId });
+          return (
+            <input
+              id={field.name}
+              type={field.type}
+              placeholder={field.type === 'text' ? field.placeholder : undefined}
+              onChange={onChange}
+              value={value || ''}
+              ref={ref}
+              className="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+          );
+        }}
+      />
+    );
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col gap-3 my-2"
-    >
-      <input
-        type="text"
-        placeholder="Activities Name"
-        className="input input-bordered w-full max-w-xs"
-        {...register("Activity_Name")}
-      />
-      {errors.Activity_Name && <span>{errors.Activity_Name.message}</span>}
-      
-      <select className="select select-secondary w-full max-w-xs" {...register('Status')}>
-        <option value="" disabled selected>Status</option>
-        <option value="Pending">Pending</option>
-        <option value="In Progress">On Going</option>
-        <option value="Completed">Completed</option>
-      </select>
-      {errors.Status && <span>{errors.Status.message}</span>}
-
-      <select className="select select-secondary w-full max-w-xs" {...register('Priority')}>
-        <option value="" disabled selected>Level</option>
-        <option value="Low">Low</option>
-        <option value="Medium">Medium</option>
-        <option value="High">High</option>
-      </select>
-      {errors.Priority && <span>{errors.Priority.message}</span>}
-
-      <input
-        type="date"
-        className="input input-bordered w-full max-w-xs"
-        {...register("Deadline")}
-      />
-      {errors.Deadline && <span>{errors.Deadline.message}</span>}
-
-      <button className="btn btn-secondary" type="submit">
-        Submit
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      {formFields.map((field) => (
+        <div key={field.name} className="space-y-2">
+          <label
+            htmlFor={field.name}
+            className="block text-sm font-medium text-gray-700"
+          >
+            {field.label}
+          </label>
+          {renderField(field)}
+          {errors[field.name] && (
+            <p className="text-sm text-red-600">
+              {errors[field.name]?.message}
+            </p>
+          )}
+        </div>
+      ))}
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className="w-full px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        {isSubmitting ? 'Submitting...' : 'Submit'}
       </button>
     </form>
   );
 };
 
-export default Form;
+export default TaskForm;

@@ -1,34 +1,6 @@
 {
   "Lists": [
     {
-      "id": "10",
-      "Activity_Name": "Makan",
-      "Status": "Pending",
-      "Priority": "Low",
-      "Deadline": "2024-07-23"
-    },
-    {
-      "id": "11",
-      "Activity_Name": "Minum",
-      "Status": "Pending",
-      "Priority": "High",
-      "Deadline": "2024-07-24"
-    },
-    {
-      "id": "12",
-      "Activity_Name": "kerjain tugas Ipa",
-      "Status": "In Progress",
-      "Priority": "Medium",
-      "Deadline": "2024-07-24"
-    },
-    {
-      "id": "13",
-      "Activity_Name": "kerjain tugas IPS",
-      "Status": "Pending",
-      "Priority": "Medium",
-      "Deadline": "2024-07-24"
-    },
-    {
       "id": "14",
       "Activity_Name": "task 12",
       "Status": "Completed",
@@ -36,25 +8,32 @@
       "Deadline": "2024-07-11"
     },
     {
-      "id": 15,
+      "id": "15",
       "Activity_Name": "Testing ",
       "Status": "Pending",
       "Priority": "Low",
       "Deadline": "2024-12-04"
     },
     {
-      "id": 16,
+      "id": "16",
       "Activity_Name": "Testing ",
       "Status": "Pending",
       "Priority": "Low",
       "Deadline": "2024-12-04"
     },
     {
-      "id": 17,
+      "id": "17",
       "Activity_Name": "TESTING",
       "Status": "Completed",
       "Priority": "High",
       "Deadline": "2024-12-11"
+    },
+    {
+      "id": 18,
+      "Activity_Name": "Testing 2",
+      "Status": "Pending",
+      "Priority": "Low",
+      "Deadline": "2025-01-03"
     }
   ]
 }
